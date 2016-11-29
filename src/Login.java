@@ -44,7 +44,7 @@ public class Login extends HttpServlet {
 //			Class.forName("oracle.jdbc.driver.OracleDriver");
 //			con = DriverManager.getConnection("jdbc:oracle:thin:ora1/ora1@localhost:1521:orcl");
 //			stmt = con.createStatement();
-//			rs = stmt.executeQuery(sql);
+//			rs = stmt.executeQuery(sql); 
 ////			response.getWriter().append("Company ID\t");
 //			boolean ufound = false;
 //			while(rs.next()){
