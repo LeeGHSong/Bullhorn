@@ -21,5 +21,7 @@
             <input type="reset" value="Clear"/>
         </div>  
 	</form>   
+	<jsp:include page="footer.jsp"></jsp:include>	
+	
 </body>
 </html>
