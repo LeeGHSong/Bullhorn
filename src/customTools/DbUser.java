@@ -37,7 +37,8 @@ public class DbUser {
 				user.setUsername(rs.getString(2));
 				user.setUseremail(rs.getString(3));
 				user.setUserpassword(rs.getString(4));
-				//user.setJoindate(java.util.Date(rs.getString(5)));
+//				user.setJoindate(java.util.Date(rs.getString(5)));
+				user.setJoindate(rs.getDate(5));
 				user.setMotto(rs.getString(6));
 			}
 

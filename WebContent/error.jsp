@@ -7,7 +7,7 @@
 <title>Error</title>
 </head>
 <body>
-	<h1>Message failed</h1>
+	<h1>Process failed</h1>
 
 	<a href="home.jsp">Back to home</a>
 </body>

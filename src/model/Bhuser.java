@@ -30,7 +30,7 @@ public class Bhuser implements Serializable {
 	public Date getJoindate() {
 		return this.joindate;
 	}
-
+	
 	public void setJoindate(Date joindate) {
 		this.joindate = joindate;
 	}
