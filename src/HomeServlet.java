@@ -66,8 +66,11 @@ public class HomeServlet extends HttpServlet {
 	 
 		//go to the newsfeed or error
 		if (works==1){
-			nextURL = "/newsfeed.jsp";
-			request.setAttribute("posttext",posttext);	
+//			nextURL = "/newsfeed.jsp";
+//			nextURL = "/NewsfeedServlet";
+			nextURL = "/NewsfeedServlet?userid="+userid;
+//			getServletContext().getRequestDispatcher("/NewsfeedServlet").forward(request, response);
+			//request.setAttribute("posttext",posttext);	
 		}	
 		getServletContext().getRequestDispatcher(nextURL).forward(request, response);
 	}

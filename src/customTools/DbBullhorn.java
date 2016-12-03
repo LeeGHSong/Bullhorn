@@ -51,7 +51,7 @@ public class DbBullhorn {
 
 	public static List<Bhpost> AllPosts () throws SQLException, ClassNotFoundException{
 		List<Bhpost> posts = new ArrayList<Bhpost>();
-		String sql = "select postid,postdate,posttext,bhuserid from bhpost";
+		String sql = "select postid,postdate,posttext,bhuserid from bhpost order by postid";
 		ResultSet rs = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -78,10 +78,37 @@ public class DbBullhorn {
 		return posts;
 	}
 
-	public static List<Bhpost> postsofUser(long userid)
+	public static List<Bhpost> postsofUser(long userid) throws ClassNotFoundException, SQLException
 	{
 		List<Bhpost> userposts = new ArrayList<Bhpost>();
+		String sql = "select postid,postdate,posttext,bhuserid from bhpost where bhuserid = ? order by postid";
+		ResultSet rs = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
 
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		con = DriverManager.getConnection("jdbc:oracle:thin:ora1/ora1@localhost:1521:orcl");
+		pstmt = con.prepareStatement(sql);
+
+		pstmt.setLong(1,userid);
+		
+		rs = pstmt.executeQuery();
+		
+		// Fetch each row from the result set
+		while (rs.next()) {
+			long postid = rs.getInt("postid");
+			java.util.Date postdate = rs.getDate("postdate");
+			String posttext = rs.getString("posttext");
+			//long userid = rs.getLong("bhuserid");
+
+			Bhpost p = new Bhpost();
+			p.setPostid(postid);
+			p.setPostdate(convertJavaDateToSqlDate(postdate));
+			p.setPosttext(posttext);
+			p.setBhuserid(userid);
+			//add the post to the arraylist
+			userposts.add(p);
+		}
 		return userposts;
 	}
 	public static List<Bhpost> postsofUser(String useremail)
